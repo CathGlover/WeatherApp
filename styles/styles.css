@@ -1,0 +1,53 @@
+.weatherapp {
+  border: 1px solid;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 700px;
+  border-radius: 10px;
+  border-color: grey;
+}
+
+.search-form .form-control .submit-button {
+  padding: 10px;
+  margin: 10px;
+  height: 20px;
+}
+
+.form-control {
+  font-family: "Roboto", sans-serif;
+}
+
+.submit-button {
+  font-family: "Roboto", sans-serif;
+}
+
+.todays-weather {
+  margin: 15px auto;
+}
+
+img {
+  padding: 5px;
+}
+p {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  font-size: 24px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+}
+h2 {
+  font-size: 20px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.row {
+  font-family: "Roboto", sans-serif;
+}
+
+.current-city {
+  display: inline;
+}
