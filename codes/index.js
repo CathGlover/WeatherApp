@@ -47,7 +47,12 @@ function showTemperature(event) {
   currentDay.innerHTML = formatDate(event.data.dt * 1000);
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = event.data.weather[0].description;
-  console.log(event.data.weather[0].description);
+  let weatherImage = document.querySelector("#weather-image");
+  weatherImage.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${event.data.weather[0].icon}@2x.png`
+  );
+  weatherImage.setAttribute("alt", event.data.weather[0].description);
 }
 
 let findTemp = document.querySelector("#current-temp");
