@@ -37,7 +37,9 @@ function showTemperature(event) {
   console.log(liveWindSpeed);
   windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = liveWindSpeed;
+  console.log(event.data);
 }
 
 let findTemp = document.querySelector("#current-temp");
 findTemp.addEventListener("submit", getCity);
+

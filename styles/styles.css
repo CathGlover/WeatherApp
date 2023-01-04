@@ -49,6 +49,9 @@ h2 {
 }
 
 .current-city,
-#wind-speed {
+#wind-speed,
+#celsius,
+#farenheit,
+#humidity {
   display: inline;
 }
