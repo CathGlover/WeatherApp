@@ -48,6 +48,7 @@ h2 {
   font-family: "Roboto", sans-serif;
 }
 
-.current-city {
+.current-city,
+#wind-speed {
   display: inline;
 }

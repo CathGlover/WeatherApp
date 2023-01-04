@@ -33,10 +33,11 @@ function showTemperature(event) {
   let liveTemp = Math.round(event.data.main.temp);
   tempChange = document.querySelector("#temperature");
   tempChange.innerHTML = liveTemp;
+  let liveWindSpeed = Math.round(event.data.wind.speed);
+  console.log(liveWindSpeed);
+  windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = liveWindSpeed;
 }
 
-function liveLocation() {
-  console.log("Hello");
-}
 let findTemp = document.querySelector("#current-temp");
 findTemp.addEventListener("submit", getCity);
