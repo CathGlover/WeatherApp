@@ -15,24 +15,20 @@ function formatDate(timeStamp) {
 
 function getCity(event) {
   event.preventDefault();
-  let cityInput = document.querySelector("#city-temp");
-  let liveCity = document.querySelector("#city");
-  liveCity.innerHTML = `${cityInput.value}`;
   currentCityTemperature();
 }
 
 function currentCityTemperature(position) {
   let cityInput = document.querySelector("#city-temp");
-  console.log(cityInput.value);
   let cityLive = cityInput.value;
-  console.log(cityLive);
   let apiKey = "9d18ac1c378d20dc84d1fe2241698d6f";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityLive}&units=metric&appid=${apiKey}`;
-  console.log(apiURL);
   axios.get(apiURL).then(showTemperature);
 }
 
 function showTemperature(event) {
+  let cityName = document.querySelector("#city");
+  cityName.innerHTML = event.data.name;
   let liveTemp = Math.round(event.data.main.temp);
   tempChange = document.querySelector("#temperature");
   tempChange.innerHTML = liveTemp;
