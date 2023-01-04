@@ -1,14 +1,17 @@
-let now = new Date();
-
-let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
-let currentDay = days[now.getDay()];
-let currentHour = now.getHours();
-let currentMinutes = now.getMinutes();
-let formattedDate = `${currentDay} | ${currentHour}:${currentMinutes}`;
-
-let currentDayTime = document.querySelector("#current-day");
-let nowTime = new Date();
-currentDayTime.innerHTML = formattedDate;
+function formatDate(timeStamp) {
+  let date = new Date(timeStamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${mintues}`;
+  }
+  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 
 function getCity(event) {
   event.preventDefault();
@@ -40,6 +43,8 @@ function showTemperature(event) {
   let liveHumidity = event.data.main.humidity;
   humid = document.querySelector("#humidity");
   humid.innerHTML = liveHumidity;
+  let currentDay = document.querySelector("#current-day");
+  currentDay.innerHTML = formatDate(event.data.dt * 1000);
 }
 
 let findTemp = document.querySelector("#current-temp");
