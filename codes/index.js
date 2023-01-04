@@ -6,7 +6,7 @@ function formatDate(timeStamp) {
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes = `0${mintues}`;
+    minutes = `0${minutes}`;
   }
   let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
   let day = days[date.getDay()];
@@ -45,6 +45,9 @@ function showTemperature(event) {
   humid.innerHTML = liveHumidity;
   let currentDay = document.querySelector("#current-day");
   currentDay.innerHTML = formatDate(event.data.dt * 1000);
+  let weatherDescription = document.querySelector("#weather-description");
+  weatherDescription.innerHTML = event.data.weather[0].description;
+  console.log(event.data.weather[0].description);
 }
 
 let findTemp = document.querySelector("#current-temp");

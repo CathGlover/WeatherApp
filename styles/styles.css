@@ -28,6 +28,7 @@
 img {
   padding: 5px;
 }
+
 p {
   padding-top: 10px;
   padding-left: 10px;
@@ -44,6 +45,14 @@ h2 {
   font-family: "Roboto", sans-serif;
 }
 
+h3 {
+  padding-left: 10px;
+}
+
+#weather-description:first-letter {
+  text-transform: capitalize;
+}
+
 .row {
   font-family: "Roboto", sans-serif;
 }
@@ -52,6 +61,7 @@ h2 {
 #wind-speed,
 #celsius,
 #farenheit,
-#humidity {
+#humidity,
+#weather-description {
   display: inline;
 }
