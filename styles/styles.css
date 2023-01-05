@@ -65,3 +65,12 @@ h3 {
 #weather-description {
   display: inline;
 }
+
+.todays-weather .active {
+  color: black;
+  cursor: default;
+}
+
+.todays-weather .active:hover {
+  text-decoration: none;
+}
