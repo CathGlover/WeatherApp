@@ -8,7 +8,7 @@ function formatDate(timeStamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
@@ -24,6 +24,11 @@ function currentCityTemperature(position) {
   let apiKey = "9d18ac1c378d20dc84d1fe2241698d6f";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityLive}&units=metric&appid=${apiKey}`;
   axios.get(apiURL).then(showTemperature);
+
+  let apiKeyTwo = "edf069311acf2bebo10f4bbbc53249t3";
+  let apiURLTwo = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKeyTwo}&units=metric`;
+  axios.get(apiURLTwo).then(displayForecast);
+  console.log(apiURLTwo);
 }
 
 function showTemperature(event) {
@@ -50,6 +55,29 @@ function showTemperature(event) {
   );
   weatherImage.setAttribute("alt", event.data.weather[0].description);
   celsiusTemperature = event.data.main.temp;
+}
+
+function displayForecast(event) {
+  console.log(event);
+  let forecastElementOne = document.querySelector("#day-1");
+  forecastElementOne.innerHTML = "Forecast 1";
+  let dateOne = document.querySelector("#temp-1");
+  dateOne.innerHTML = `${Math.round(event.data.daily[0].temperature.day)}°C`;
+
+  let forecastElementTwo = document.querySelector("#day-2");
+  forecastElementTwo.innerHTML = "Forecast 2";
+  let dateTwo = document.querySelector("#temp-2");
+  dateTwo.innerHTML = `${Math.round(event.data.daily[1].temperature.day)}°C`;
+
+  let forecastElementThree = document.querySelector("#day-3");
+  forecastElementThree.innerHTML = "Forecast 3";
+  let dateThree = document.querySelector("#temp-3");
+  dateThree.innerHTML = `${Math.round(event.data.daily[2].temperature.day)}°C`;
+
+  let forecastElementFour = document.querySelector("#day-4");
+  forecastElementFour.innerHTML = "Forecast 4";
+  let dateFour = document.querySelector("#temp-4");
+  dateFour.innerHTML = `${Math.round(event.data.daily[3].temperature.day)}°C`;
 }
 
 function getFarenheit(position) {

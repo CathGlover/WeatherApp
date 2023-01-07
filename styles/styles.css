@@ -74,3 +74,7 @@ h3 {
 .todays-weather .active:hover {
   text-decoration: none;
 }
+
+.all-weather {
+  font-size: 15px;
+}
