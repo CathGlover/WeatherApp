@@ -29,6 +29,16 @@ function currentCityTemperature(position) {
   axios.get(apiURLTwo).then(displayForecast);
 }
 
+function launchPage() {
+  let cityInput = document.querySelector("#city-temp");
+  let cityLive = "London";
+  let apiKey = "9d18ac1c378d20dc84d1fe2241698d6f";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityLive}&units=metric&appid=${apiKey}`;
+  axios.get(apiURL).then(showTemperature);
+  let apiKeyTwo = "edf069311acf2bebo10f4bbbc53249t3";
+  let apiURLTwo = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKeyTwo}&units=metric`;
+  axios.get(apiURLTwo).then(displayForecast);
+}
 function showTemperature(event) {
   let cityName = document.querySelector("#city");
   cityName.innerHTML = event.data.name;
@@ -118,6 +128,8 @@ function getCelsius(position) {
   celsiusLink.classList.add("active");
   celsiusElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+launchPage();
 
 let celsiusTemperature = null;
 
