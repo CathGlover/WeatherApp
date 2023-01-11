@@ -66,15 +66,6 @@ h3 {
   display: inline;
 }
 
-.todays-weather .active {
-  color: black;
-  cursor: default;
-}
-
-.todays-weather .active:hover {
-  text-decoration: none;
-}
-
 .all-weather {
   font-size: 15px;
 }

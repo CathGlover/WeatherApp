@@ -44,7 +44,7 @@ function showTemperature(event) {
   cityName.innerHTML = event.data.name;
   let liveTemp = Math.round(event.data.main.temp);
   tempChange = document.querySelector("#temperature");
-  tempChange.innerHTML = liveTemp;
+  tempChange.innerHTML = `${liveTemp}°C`;
   let liveWindSpeed = Math.round(event.data.wind.speed);
   console.log(liveWindSpeed);
   windSpeed = document.querySelector("#wind-speed");
@@ -62,7 +62,6 @@ function showTemperature(event) {
     `http://openweathermap.org/img/wn/${event.data.weather[0].icon}@2x.png`
   );
   weatherImage.setAttribute("alt", event.data.weather[0].description);
-  celsiusTemperature = event.data.main.temp;
 }
 
 function formatDay(timestamp) {
@@ -111,33 +110,7 @@ function displayForecast(event) {
   iconFour.setAttribute("src", `${event.data.daily[4].condition.icon_url}`);
 }
 
-function getFarenheit(position) {
-  position.preventDefault();
-  let farenheitElement = document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
-
-  let farenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-  farenheitElement.innerHTML = Math.round(farenheitTemp);
-}
-
-function getCelsius(position) {
-  position.preventDefault();
-  let celsiusElement = document.querySelector("#temperature");
-  farenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  celsiusElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 launchPage();
-
-let celsiusTemperature = null;
 
 let findTemp = document.querySelector("#current-temp");
 findTemp.addEventListener("submit", getCity);
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", getFarenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", getCelsius);
