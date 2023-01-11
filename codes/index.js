@@ -1,5 +1,5 @@
-function formatDate(timeStamp) {
-  let date = new Date(timeStamp);
+function formatDate() {
+  let date = new Date();
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -21,9 +21,9 @@ function getCity(event) {
 function currentCityTemperature(position) {
   let cityInput = document.querySelector("#city-temp");
   let cityLive = cityInput.value;
-  let apiKey = "9d18ac1c378d20dc84d1fe2241698d6f";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityLive}&units=metric&appid=${apiKey}`;
-  axios.get(apiURL).then(showTemperature);
+  let apiKey = "edf069311acf2bebo10f4bbbc53249t3";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKey}&units=metric`;
+  axios.get(apiURL).then(showTemperature).then(displayForecast);
   let apiKeyTwo = "edf069311acf2bebo10f4bbbc53249t3";
   let apiURLTwo = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKeyTwo}&units=metric`;
   axios.get(apiURLTwo).then(displayForecast);
@@ -32,8 +32,8 @@ function currentCityTemperature(position) {
 function launchPage() {
   let cityInput = document.querySelector("#city-temp");
   let cityLive = "London";
-  let apiKey = "9d18ac1c378d20dc84d1fe2241698d6f";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityLive}&units=metric&appid=${apiKey}`;
+  let apiKey = "edf069311acf2bebo10f4bbbc53249t3";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKey}&units=metric`;
   axios.get(apiURL).then(showTemperature);
   let apiKeyTwo = "edf069311acf2bebo10f4bbbc53249t3";
   let apiURLTwo = `https://api.shecodes.io/weather/v1/forecast?query=${cityLive}&key=${apiKeyTwo}&units=metric`;
@@ -41,27 +41,22 @@ function launchPage() {
 }
 function showTemperature(event) {
   let cityName = document.querySelector("#city");
-  cityName.innerHTML = event.data.name;
-  let liveTemp = Math.round(event.data.main.temp);
+  cityName.innerHTML = event.data.city;
+  let liveTemp = Math.round(event.data.daily[0].temperature.day);
   tempChange = document.querySelector("#temperature");
   tempChange.innerHTML = `${liveTemp}°C`;
-  let liveWindSpeed = Math.round(event.data.wind.speed);
-  console.log(liveWindSpeed);
+  let liveWindSpeed = Math.round(event.data.daily[0].wind.speed);
   windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = liveWindSpeed;
-  let liveHumidity = event.data.main.humidity;
+  let liveHumidity = event.data.daily[0].temperature.humidity;
   humid = document.querySelector("#humidity");
   humid.innerHTML = liveHumidity;
   let currentDay = document.querySelector("#current-day");
-  currentDay.innerHTML = formatDate(event.data.dt * 1000);
+  currentDay.innerHTML = formatDate();
   let weatherDescription = document.querySelector("#weather-description");
-  weatherDescription.innerHTML = event.data.weather[0].description;
+  weatherDescription.innerHTML = event.data.daily[0].condition.description;
   let weatherImage = document.querySelector("#weather-image");
-  weatherImage.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${event.data.weather[0].icon}@2x.png`
-  );
-  weatherImage.setAttribute("alt", event.data.weather[0].description);
+  weatherImage.setAttribute("src", `${event.data.daily[0].condition.icon_url}`);
 }
 
 function formatDay(timestamp) {
@@ -72,7 +67,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(event) {
-  console.log(event);
   let forecastElementOne = document.querySelector("#day-1");
   forecastElementOne.innerHTML = "Forecast 1";
   let dateOne = document.querySelector("#temp-1");
