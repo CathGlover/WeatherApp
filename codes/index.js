@@ -68,7 +68,6 @@ function formatDay(timestamp) {
 
 function displayForecast(event) {
   let forecastElementOne = document.querySelector("#day-1");
-  forecastElementOne.innerHTML = "Forecast 1";
   let dateOne = document.querySelector("#temp-1");
   dateOne.innerHTML = `${Math.round(event.data.daily[1].temperature.day)}°C`;
   let tempOne = document.querySelector("#day-1");
@@ -77,7 +76,6 @@ function displayForecast(event) {
   iconOne.setAttribute("src", `${event.data.daily[1].condition.icon_url}`);
 
   let forecastElementTwo = document.querySelector("#day-2");
-  forecastElementTwo.innerHTML = "Forecast 2";
   let dateTwo = document.querySelector("#temp-2");
   dateTwo.innerHTML = `${Math.round(event.data.daily[2].temperature.day)}°C`;
   let tempTwo = document.querySelector("#day-2");
@@ -86,7 +84,6 @@ function displayForecast(event) {
   iconTwo.setAttribute("src", `${event.data.daily[2].condition.icon_url}`);
 
   let forecastElementThree = document.querySelector("#day-3");
-  forecastElementThree.innerHTML = "Forecast 3";
   let dateThree = document.querySelector("#temp-3");
   dateThree.innerHTML = `${Math.round(event.data.daily[3].temperature.day)}°C`;
   let tempThree = document.querySelector("#day-3");
@@ -95,7 +92,6 @@ function displayForecast(event) {
   iconThree.setAttribute("src", `${event.data.daily[3].condition.icon_url}`);
 
   let forecastElementFour = document.querySelector("#day-4");
-  forecastElementFour.innerHTML = "Forecast 4";
   let dateFour = document.querySelector("#temp-4");
   dateFour.innerHTML = `${Math.round(event.data.daily[4].temperature.day)}°C`;
   let tempFour = document.querySelector("#day-4");
